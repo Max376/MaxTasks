@@ -28,10 +28,11 @@ docs/          Project and technical documentation
 
 ## Start the current foundation
 
-Start the API from the repository root:
+From the repository root, enter the backend module and start the API:
 
 ```powershell
-go run ./backend/cmd/server
+Set-Location backend
+go run ./cmd/server
 ```
 
 In a second terminal, install and start the web client:
@@ -49,8 +50,10 @@ The API listens on `http://localhost:8080` by default. The frontend development 
 Run these checks before opening a pull request:
 
 ```powershell
-go test ./backend/...
-go build ./backend/...
+Set-Location backend
+go test ./...
+go build ./...
+Set-Location ..
 Set-Location frontend
 npm run lint
 npm run build
