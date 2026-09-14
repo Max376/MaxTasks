@@ -5,6 +5,8 @@ A self-hosted, API-first task manager for web and Android, built with React, Go,
 ## Project documentation
 
 - [Project plan](docs/PROJECT_PLAN.md) — vision, scope, milestones, architecture, and delivery workflow
+- [GitHub workflow](docs/GITHUB_WORKFLOW.md) — how Projects, Issues, Milestones, labels, and pull requests are used
+- [MaxTasks Roadmap project](https://github.com/users/Max376/projects/4) — live planning board
 
 ## Current status
 

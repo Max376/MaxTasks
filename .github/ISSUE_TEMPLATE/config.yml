@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Project plan
+    url: https://github.com/Max376/MaxTasks/blob/main/docs/PROJECT_PLAN.md
+    about: Read the documented scope, milestones, architecture, and definition of done.
+  - name: MaxTasks Roadmap
+    url: https://github.com/users/Max376/projects/4
+    about: View the GitHub Project board and current delivery status.
