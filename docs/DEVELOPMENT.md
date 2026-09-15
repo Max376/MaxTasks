@@ -36,7 +36,20 @@ Copy-Item .env.example .env
 docker compose up --build
 ```
 
-Open the frontend at `http://localhost:5173`. The API startup endpoint is available at `http://localhost:8080/`, and PostgreSQL is exposed on `localhost:5432` for local tools. The host ports can be changed in `.env` with `FRONTEND_PORT`, `API_PORT`, and `POSTGRES_PORT`.
+Open the frontend at `http://localhost:5173`. The API health endpoint is
+available at `http://localhost:8080/health` and the database readiness endpoint
+at `http://localhost:8080/ready`. PostgreSQL is exposed on `localhost:5432` for
+local tools. The host ports can be changed in `.env` with `FRONTEND_PORT`,
+`API_PORT`, and `POSTGRES_PORT`.
+
+The health endpoint returns `200 OK` with
+`{"service":"maxtasks-api","status":"ok"}` when the process is running.
+The readiness endpoint checks PostgreSQL and returns `200 OK` with
+`{"service":"maxtasks-api","status":"ready","checks":{"database":"ok"}}`
+when it is available. If the database is missing or unavailable, readiness
+returns `503 Service Unavailable` with
+`{"service":"maxtasks-api","status":"not_ready","checks":{"database":"unavailable"}}`.
+These responses contain no connection details or internal errors.
 
 The `postgres_data` named volume keeps PostgreSQL data when containers are stopped or recreated:
 
