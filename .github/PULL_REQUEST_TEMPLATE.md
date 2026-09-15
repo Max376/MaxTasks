@@ -6,6 +6,12 @@ Describe the change and the user or engineering outcome it delivers.
 
 Closes #
 
+## Agent workflow
+
+- Attempt: 1 / 2 / 3
+- Agent phase: Coding / Testing / Fix Required
+- Testing result: Pending / PASS / FAIL
+
 ## Verification
 
 - [ ] Tests or checks were added or updated where appropriate.
