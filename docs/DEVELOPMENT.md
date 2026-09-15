@@ -53,9 +53,42 @@ docker compose down --volumes
 
 Never commit `.env`; it is ignored by Git. Compose builds the API's internal `DATABASE_URL` from the PostgreSQL variables, so the database hostname inside the Docker network remains `db`.
 
+## Apply database migrations
+
+Migrations are versioned SQL files in `migrations/` and run with the pinned
+`migrate/migrate` image. Start the database and apply all pending migrations
+from the repository root:
+
+```powershell
+docker compose up -d db
+docker compose --profile tools run --rm migrate
+```
+
+The migration service waits for PostgreSQL to become healthy and records the
+applied version in `schema_migrations`. It is safe to run the command again;
+already-applied migrations are skipped. The schema, relationships, indexes,
+and rollback file are documented in [`migrations/README.md`](../migrations/README.md).
+
+To start the complete stack after the schema is applied:
+
+```powershell
+docker compose up -d api frontend
+```
+
+For a clean local database, remove the development volume and repeat the
+commands above. This deletes only local data:
+
+```powershell
+docker compose down --volumes
+docker compose up -d db
+docker compose --profile tools run --rm migrate
+```
+
 ## Troubleshooting Docker
 
 - Check the rendered, non-secret Compose configuration with `docker compose --env-file .env.example config`.
+- Check the migration service configuration with `docker compose --env-file .env.example --profile tools config --quiet`.
+- If a migration fails, inspect the database logs with `docker compose logs db`; fix the migration before retrying it.
 - Check service state with `docker compose ps` and inspect logs with `docker compose logs api`, `docker compose logs frontend`, or `docker compose logs db`.
 - If a host port is already in use, change the corresponding `*_PORT` value in `.env`, then run `docker compose up --build` again.
 - If the database was initialized with old credentials, stop the stack with `docker compose down --volumes` and start it again. This deletes only the local development database volume.

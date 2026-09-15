@@ -11,7 +11,9 @@ A self-hosted, API-first task manager for web and Android, built with React, Go,
 
 ## Current status
 
-The project is implementing the Foundation milestone. The initial Go API and React application shells are available; database migrations and Docker Compose are tracked as the next foundation issues.
+The project is implementing the Foundation milestone. The initial Go API,
+React application shell, Docker Compose runtime, and PostgreSQL schema
+migration are available.
 
 ## Local development
 

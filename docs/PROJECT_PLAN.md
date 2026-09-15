@@ -88,7 +88,7 @@ The frontend is responsible for presentation and client-side interaction. The Go
 - [ ] Create the React and TypeScript frontend.
 - [ ] Add Docker Compose for the application and PostgreSQL.
 - [ ] Add configuration through environment variables.
-- [ ] Add database migrations.
+- [x] Add database migrations.
 - [ ] Add `/health` and readiness checks.
 
 ### Milestone 2 — Core task management
@@ -182,4 +182,5 @@ The repository should keep documentation close to the code:
 
 ## 11. Current status
 
-The repository is at the documentation and planning stage. The next implementation milestone is the technical foundation: a Dockerized Go API, React frontend, and PostgreSQL database with a working health check and migration process.
+The repository is implementing the technical foundation: a Dockerized Go API,
+React frontend, and PostgreSQL database with a versioned initial migration.
