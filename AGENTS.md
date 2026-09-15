@@ -10,7 +10,7 @@ The coordinator selects the issue, starts the coding attempt, hands the branch t
 
 ### Coding agent
 
-The coding agent implements the assigned issue on a branch named `agent/issue-<number>-<short-name>`. It must read the complete issue, preserve the acceptance criteria, run the documented checks, and report the commit, branch, checks, and any known limitations. It must not merge the branch or close the issue.
+The coding agent implements the assigned product issue on a branch named `agent/issue-<number>-<short-name>`. Repository workflow and setup changes owned by the coordinator may use `chore/<short-name>` when they are tracked by a GitHub issue and the pull request links that issue with `Closes #<number>`. The coding agent must read the complete issue, preserve the acceptance criteria, run the documented checks, and report the commit, branch, checks, and any known limitations. It must not merge the branch or close the issue.
 
 ### Testing agent
 
@@ -20,7 +20,7 @@ On `PASS`, the testing agent is authorized by this workflow to merge the pull re
 
 ## Attempt limit
 
-An attempt is one coding-agent implementation followed by one testing-agent review. The maximum is three attempts total:
+An attempt is exactly one coding-agent implementation followed by one testing-agent review. The maximum is three attempts total:
 
 ```text
 Attempt 1: initial implementation
@@ -60,6 +60,7 @@ Use the labels `agent:coding`, `agent:testing`, `agent:blocked`, `review:pending
 
 ## Branch and pull-request rules
 
+- Product issue work uses `agent/issue-<number>-<short-name>`; coordinator-owned repository workflow/setup work may use `chore/<short-name>` only when tracked by an issue.
 - The coding agent creates one branch for the issue and keeps repair commits on that branch.
 - The pull request links the issue with `Closes #<number>`.
 - The coding agent never pushes directly to `main`.

@@ -34,7 +34,21 @@ The testing agent must review the original issue rather than judging whether the
 
 ## What each agent reports
 
-The coding handoff contains the branch, commit SHA, changed behavior, validation commands, and known limitations. The testing handoff contains the result, commands run, evidence, and file references. A FAIL must identify the exact acceptance criterion that is not satisfied and the smallest useful repair.
+Every handoff uses the same contract:
+
+```text
+Issue: #<number>
+Branch: agent/issue-<number>-<short-name> (or an approved tracked chore/<short-name> workflow branch)
+Attempt: <1|2|3>/3
+Acceptance criteria: copied from the issue
+Validation commands: exact commands to run
+Coding result: commit SHA and summary
+Testing result: PASS or FAIL
+Evidence: command output, test results, and file references
+Feedback: required repairs when the result is FAIL
+```
+
+The coding handoff contains the copied acceptance criteria, branch, commit SHA, changed behavior, exact validation commands, evidence, and known limitations. The testing handoff contains exactly `PASS` or `FAIL`, the commands run, evidence, and file references. A FAIL must identify the exact acceptance criterion that is not satisfied and the smallest useful repair; the coding agent receives that feedback verbatim on the next attempt.
 
 ## GitHub Project usage
 
