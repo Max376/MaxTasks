@@ -70,6 +70,23 @@ cryptographically random session cookie.
 - Do not include password hashes, session tokens, database errors, or stack
   traces in API responses or normal application logs.
 
+## Implementation contract for Issue #5
+
+This accepted ADR is the design deliverable for [Issue #5](https://github.com/Max376/MaxTasks/issues/5).
+The authentication implementation must preserve each of the following
+requirements:
+
+| Issue #5 acceptance criterion | Required implementation behavior |
+| --- | --- |
+| Session or token strategy is documented | Use the PostgreSQL-backed server-side session and opaque cookie strategy defined above. |
+| Passwords are never stored in plaintext | Persist only the versioned Argon2id hash; keep plaintext passwords out of logs, responses, and other durable storage. |
+| Expiration and revocation are defined | Enforce both the 30-day absolute and seven-day idle limits, and reject revoked sessions. Logout revokes the current session; password changes and suspected compromise can revoke all sessions. |
+| Authentication errors do not reveal whether an account exists | Return the same generic authentication failure for unknown emails, wrong passwords, expired sessions, and revoked sessions. |
+| Browser authentication with the API is explained | Send the session cookie on same-origin requests, or use the configured origin with credentialed CORS and CSRF protection during local development. |
+
+Any implementation that changes this contract must introduce a new ADR that
+supersedes ADR-0001 before the implementation is merged.
+
 ## Alternatives considered
 
 ### JSON Web Tokens in the browser
