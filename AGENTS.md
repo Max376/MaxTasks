@@ -36,7 +36,7 @@ Every handoff must include:
 
 ```text
 Issue: #<number>
-Branch: agent/issue-<number>-<short-name>
+Branch: agent/issue-<number>-<short-name> (or an approved tracked chore/<short-name> workflow branch)
 Attempt: <1|2|3>/3
 Acceptance criteria: copied from the issue
 Validation commands: exact commands to run
