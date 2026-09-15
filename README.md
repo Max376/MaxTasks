@@ -15,4 +15,4 @@ The project is implementing the Foundation milestone. The initial Go API and Rea
 
 ## Local development
 
-See the [development guide](docs/DEVELOPMENT.md) for prerequisites, repository layout, startup commands, and quality checks.
+See the [development guide](docs/DEVELOPMENT.md) for prerequisites, the Docker Compose startup command, service ports, troubleshooting, and quality checks.
