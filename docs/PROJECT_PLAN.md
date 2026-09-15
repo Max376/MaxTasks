@@ -80,7 +80,7 @@ The frontend is responsible for presentation and client-side interaction. The Go
 - [ ] Add contribution guidelines and code of conduct.
 - [ ] Create GitHub labels and milestones.
 - [ ] Add issue and pull-request templates.
-- [ ] Record the initial architecture decision.
+- [x] Record the initial architecture decision.
 
 ### Milestone 1 — Technical foundation
 
@@ -169,6 +169,7 @@ The repository should keep documentation close to the code:
 
 - `README.md` — project overview, screenshots, quick start, and demo link.
 - `docs/PROJECT_PLAN.md` — scope, milestones, workflow, and delivery criteria.
+- `docs/decisions/README.md` — accepted architecture decisions and the ADR review process.
 - `docs/decisions/` — architecture decision records.
 - `docs/api/` — OpenAPI specification and API examples.
 - `docs/operations/` — deployment, backup, restore, and troubleshooting guides.
